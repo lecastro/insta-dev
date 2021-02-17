@@ -7,30 +7,30 @@ class New extends Component {
         image: null,
         author: '',
         place: '',
-        description:'',
-        hashtags:''
+        description: '',
+        hashtags: ''
     };
 
-    handleImageChange = e =>{
-        this.setState({image: e.target.files[0]});
+    handleImageChange = e => {
+        this.setState({ image: e.target.files[0] });
     }
 
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    handleSubmit = async e =>{
+    handleSubmit = async e => {
         e.preventDefault();
-        
+
         const data = new FormData();
-        
+
         data.append('image', this.state.image);
         data.append('author', this.state.author);
         data.append('place', this.state.place);
         data.append('description', this.state.description);
         data.append('hashtags', this.state.hashtags);
 
-        await  api.post('posts', data);
+        await api.post('posts', data);
 
         this.props.history.push('/');
     }
@@ -56,12 +56,12 @@ class New extends Component {
                     value={this.state.place}
                 ></input>
 
-                <input 
+                <input
                     type='text'
                     name='description'
                     placeholder='descrição do post'
                     onChange={this.handleChange}
-                    value={this.state.description}     
+                    value={this.state.description}
                 ></input>
 
                 <input
